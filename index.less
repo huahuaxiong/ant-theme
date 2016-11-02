@@ -1,0 +1,44 @@
+@import "./vars";
+
+@ant-prefix: "ant";
+@btn-prefix-cls: ~"@{ant-prefix}-btn";
+.ant-btn() {
+    font-size: 14px;
+	font-weight: 300;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+
+.@{ant-prefix}-theme {
+	// Button styles
+	// -----------------------------
+	.@{btn-prefix-cls} {
+		.ant-btn;
+        .for(@colors,{
+            &-@{value}{
+                color:#fff;               
+                background-color:@@value;
+                border-color:@@value;
+                &:hover{
+                    color:#fff;
+                    @color:"@{value}-hover";
+                    background-color:@@color;
+                    border-color:@@color;
+                }
+                &:active{
+                    color:#fff;
+                    @color:"@{value}-active";
+                    background-color:@@color;
+                    border-color:@@color;
+                }
+            }
+
+            &-@{value}  when (@value = default){
+                color:#76838f;
+            }
+                
+        });
+	}
+}

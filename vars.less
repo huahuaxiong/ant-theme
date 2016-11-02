@@ -1,0 +1,42 @@
+// default color
+@default: #e4eaec;
+@default-hover: #ccd5db;
+@default-active: #76838f;
+// primary
+@primary: #62a8ea;
+@primary-hover: #89bceb;
+@primary-active: #4e97d9;
+// success
+@success: #46be8a;
+@success-hover: #5cd29d;
+@success-active: #36ab7a;
+// info
+@info: #57c7d4;
+@info-hover: #77d6e1;
+@info-active: #47b8c6;
+// warning
+@warning: #f2a654;
+@warning-hover: #f4b066;
+@warning-active: #e79857;
+// danger
+@danger: #f96868;
+@danger-hover: #fa7a7a;
+@danger-active: #e9595b;
+// list
+@colors: default,
+primary,
+success,
+info,
+warning,
+danger;
+// for loop
+.for(@list, @code) {
+	& {
+		.loop(@i: 1) when (@i =< length(@list)) {
+			@value: extract(@list, @i);
+			@code();
+			.loop(@i + 1);
+		}
+		.loop();
+	}
+}
